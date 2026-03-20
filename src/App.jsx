@@ -133,7 +133,7 @@ function App() {
                   transition={currentVariant === "phase1" ? IMAGE_VARIANTS.phase1.transition : IMAGE_VARIANTS.phase23.transition}
                   className="font-black text-transparent bg-clip-text bg-gradient-to-br from-white via-cyan-100 to-cyan-500 drop-shadow-[0_0_20px_rgba(34,211,238,0.5)] leading-tight text-5xl md:text-6xl lg:text-7xl whitespace-nowrap"
                 >
-                  SURYAA
+                  SURYAKANT KOLI
                 </motion.span>
               </motion.h1>
             </motion.div>
