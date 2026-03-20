@@ -55,7 +55,7 @@ export default function ExtraCurricular() {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
             className={`relative flex flex-col md:flex-row items-center gap-8 ${
-              idx % 2 === 0 ? "md:flex-row-reverse text-left md:text-right" : "text-left"
+              idx % 2 === 0 ? "md:flex-row-reverse text-left" : "text-left"
             }`}
           >
             {/* The Text Block */}
@@ -63,13 +63,13 @@ export default function ExtraCurricular() {
               <div className={`inline-block mb-3 px-4 py-1.5 rounded-full bg-gradient-to-r ${item.accentColor} text-white text-sm font-bold shadow-lg`}>
                 {item.role}
               </div>
-              <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 group-hover:text-cyan-300 transition-colors">
+              <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 group-hover:text-cyan-300 transition-colors text-left">
                 {item.organization}
               </h3>
-              <ul className={`space-y-3 text-gray-400 text-sm md:text-base ${idx % 2 === 0 ? "md:ml-auto" : ""}`}>
+              <ul className="space-y-3 text-gray-400 text-sm md:text-base text-left">
                 {item.details.map((detail, dIdx) => (
-                  <li key={dIdx} className={`flex items-start ${idx % 2 === 0 ? "md:flex-row-reverse" : "flex-row"}`}>
-                    <span className={`text-cyan-500 mt-1 flex-shrink-0 ${idx % 2 === 0 ? "ml-3" : "mr-3"}`}>
+                  <li key={dIdx} className="flex items-start flex-row">
+                    <span className="text-cyan-500 mt-1 flex-shrink-0 mr-3">
                       ●
                     </span>
                     <span className="leading-relaxed group-hover:text-gray-200 transition-colors">{detail}</span>
