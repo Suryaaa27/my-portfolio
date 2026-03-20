@@ -10,6 +10,7 @@ import Projects from "./components/Projects";
 import ExtraCurricular from "./components/ExtraCurricular";
 import Achievements from "./components/Achievements";
 import Navbar from "./components/Navbar";
+import ParticleBackground from "./components/ParticleBackground";
 
 const getImageVariants = (isMobile) => ({
   initial: { width: "100%", x: "0%", scale: 1.5, y: "15vh", opacity: 0 },
@@ -60,6 +61,9 @@ function App() {
   return (
     <div className="bg-[#03060C] font-sans text-white min-h-screen w-full relative overflow-x-hidden">
       <Navbar />
+      
+      {/* Interactive Ambient Particles (Whole Site) */}
+      <ParticleBackground />
 
       {/* ----------------- HERO INTRO SECTION (100vh) ----------------- */}
       <div id="home" className="relative h-screen w-full flex items-center justify-center overflow-hidden">
@@ -191,7 +195,8 @@ function App() {
                     </motion.a>
 
                     <motion.a
-                      href="#"
+                      href="/resume.pdf"
+                      download="Suryaa_Resume.pdf"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       className="px-8 md:px-10 py-3 md:py-4 rounded-full border border-cyan-400/60 bg-cyan-500/10 backdrop-blur-md text-cyan-300 text-sm md:text-base font-bold uppercase tracking-[0.2em] shadow-[0_0_20px_rgba(6,182,212,0.3)] hover:bg-cyan-400/20 hover:border-cyan-300 hover:shadow-[0_0_40px_rgba(6,182,212,0.6)] hover:text-white transition-all duration-300 text-center flex items-center justify-center"
@@ -221,7 +226,7 @@ function App() {
       </div>
 
       {/* ----------------- RESUME CONTENT SECTIONS (Scrollable Below Hero) ----------------- */}
-      <div className="relative z-20 bg-[#03060C] w-full">
+      <div className="relative z-20 bg-transparent w-full">
           {/* Subtle separator */}
           <div className="w-full h-px bg-gradient-to-r from-transparent via-cyan-500/40 to-transparent" />
 
@@ -232,7 +237,7 @@ function App() {
           <section id="achievements"><Achievements /></section>
 
           {/* Footer */}
-          <footer className="w-full flex flex-col items-center justify-center py-12 text-gray-500 text-sm mt-32 border-t border-cyan-900/30 bg-[#020408]">
+          <footer className="w-full flex flex-col items-center justify-center py-12 text-gray-500 text-sm mt-32 border-t border-cyan-900/30 bg-[#020408]/80 backdrop-blur-md">
             <p className="mb-2">© 2026 Suryakant Bajarang Koli. All rights reserved.</p>
             <div className="flex space-x-6 mt-4">
               <a href="https://github.com/Suryaaa27" target="_blank" className="hover:text-cyan-400 transition-colors">GitHub</a>

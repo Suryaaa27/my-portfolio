@@ -119,11 +119,11 @@ const Navbar = () => {
         <AnimatePresence>
           {mobileMenuOpen && (
             <motion.div 
-              initial={{ opacity: 0, y: -20 }}
+              initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
+              exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.3 }}
-              className="absolute top-full left-0 w-full bg-[#03060C]/95 backdrop-blur-2xl border-b border-cyan-500/30 lg:hidden shadow-[0_20px_40px_rgba(0,0,0,0.8)]"
+              className="absolute top-full left-0 w-full bg-[#03060C]/40 backdrop-blur-2xl border-t border-b border-cyan-500/20 lg:hidden shadow-[0_30px_60px_rgba(6,182,212,0.15)]"
             >
               <ul className="flex flex-col items-center py-8 space-y-8">
                 {navLinks.map((link) => (
@@ -131,8 +131,10 @@ const Navbar = () => {
                     <a
                       href={`#${link.id}`}
                       onClick={(e) => handleClick(e, link.id, link.name)}
-                      className={`text-lg tracking-widest uppercase transition-all duration-300 font-medium ${
-                        active === link.name ? 'text-cyan-400 drop-shadow-[0_0_10px_rgba(34,211,238,0.8)]' : 'text-gray-400 hover:text-white'
+                      className={`text-lg tracking-widest uppercase transition-all duration-300 font-medium px-6 py-2 rounded-full ${
+                        active === link.name 
+                          ? 'text-cyan-400 drop-shadow-[0_0_10px_rgba(34,211,238,0.8)] bg-cyan-500/10 border border-cyan-500/30' 
+                          : 'text-gray-300 hover:text-white hover:bg-white/5'
                       }`}
                     >
                       {link.name}
