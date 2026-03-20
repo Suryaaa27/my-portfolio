@@ -10,6 +10,11 @@ const extracurricularData = [
       "Organized Flagship Event Code 404 in collaboration with CodeChef for the first time (Created 500+ impressions).",
     ],
     accentColor: "from-cyan-500 to-blue-500",
+    logo: (
+      <svg className="w-8 h-8 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+      </svg>
+    )
   },
   {
     role: "Presenter",
@@ -18,7 +23,12 @@ const extracurricularData = [
       "Delivered a technical presentation on Blockchain Fundamentals to 120+ students.",
       "Explained core blockchain concepts including decentralization, smart contracts, and real-world applications.",
     ],
-    accentColor: "from-blue-500 to-indigo-500",
+    accentColor: "from-cyan-500 to-blue-500",
+    logo: (
+      <svg className="w-8 h-8 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+      </svg>
+    )
   },
   {
     role: "Presenter",
@@ -27,7 +37,12 @@ const extracurricularData = [
       "Conducted a hands-on workshop on Conditional Statements in C attended by 160+ students.",
       "Simplified core programming concepts through live coding demonstrations and interactive problem-solving.",
     ],
-    accentColor: "from-cyan-400 to-teal-400",
+    accentColor: "from-cyan-500 to-blue-500",
+    logo: (
+      <svg className="w-8 h-8 text-teal-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+      </svg>
+    )
   },
 ];
 
@@ -60,8 +75,13 @@ export default function ExtraCurricular() {
           >
             {/* The Text Block */}
             <div className="flex-1 w-full bg-[#0a0f18]/60 backdrop-blur-md border border-cyan-500/10 p-8 rounded-3xl hover:border-cyan-400/30 hover:bg-[#0a0f18]/80 transition-all duration-300 shadow-[0_10px_30px_rgba(0,0,0,0.5)] group">
-              <div className={`inline-block mb-3 px-4 py-1.5 rounded-full bg-gradient-to-r ${item.accentColor} text-white text-sm font-bold shadow-lg`}>
-                {item.role}
+              <div className="flex items-center justify-between mb-4">
+                <div className={`inline-block px-4 py-1.5 rounded-full bg-gradient-to-r ${item.accentColor} text-white text-sm font-bold shadow-lg`}>
+                  {item.role}
+                </div>
+                <div className="p-2 bg-white/5 rounded-xl border border-white/10 shadow-[0_0_15px_rgba(0,255,255,0.1)] group-hover:scale-110 transition-transform duration-300">
+                  {item.logo}
+                </div>
               </div>
               <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 group-hover:text-cyan-300 transition-colors text-left">
                 {item.organization}
