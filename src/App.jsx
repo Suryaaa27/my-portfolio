@@ -4,6 +4,7 @@ import { useState, useEffect, useMemo } from "react";
 import backgroundImage from "./assets/profile.png";
 
 // Import resume sections
+import About from "./components/About";
 import Education from "./components/Education";
 import Skills from "./components/Skills";
 import Projects from "./components/Projects";
@@ -43,9 +44,6 @@ function App() {
     const sequence = async () => {
       await new Promise((resolve) => setTimeout(resolve, 1800));
       if (!isCancelled) setPhase("phase2");
-
-      await new Promise((resolve) => setTimeout(resolve, 2000));
-      if (!isCancelled) setPhase("phase3"); 
     };
     sequence();
     
@@ -140,27 +138,8 @@ function App() {
 
             {/* Section 2 & 3: Flowing Dynamic Content Container */}
             <AnimatePresence mode="wait">
-              {/* Phase 2: About Me */}
+              {/* Phase 2: Main Portfolio Content */}
               {phase === "phase2" && (
-                <motion.div
-                  key="about-section"
-                  initial={{ opacity: 0, y: 150 }}
-                  animate={{ opacity: 1, y: 90 }}
-                  exit={{ opacity: 0, y: 150 }}
-                  transition={{ duration: 0.6, ease: "easeOut" }}
-                  className="absolute w-full text-center px-4"
-                >
-                  <div className="backdrop-blur-md bg-white/5 border border-cyan-500/20 p-6 md:p-8 rounded-3xl shadow-[0_0_40px_rgba(0,255,255,0.15)] mx-auto w-full max-w-2xl">
-                    <h3 className="text-xl md:text-2xl font-bold text-cyan-400 mb-2 md:mb-3 tracking-widest">ABOUT ME</h3>
-                    <p className="text-base md:text-xl text-gray-300 leading-relaxed font-light">
-                      I am a passionate <span className="text-white font-medium">Designer</span> & <span className="text-white font-medium">Frontend Developer</span> dedicated to crafting immersive, cinematic digital experiences that captivate and inspire.
-                    </p>
-                  </div>
-                </motion.div>
-              )}
-
-              {/* Phase 3: Main Portfolio Content */}
-              {phase === "phase3" && (
                 <motion.div
                   key="main-section"
                   initial={{ opacity: 0, y: 150 }}
@@ -230,6 +209,7 @@ function App() {
           {/* Subtle separator */}
           <div className="w-full h-px bg-gradient-to-r from-transparent via-cyan-500/40 to-transparent" />
 
+          <section id="about"><About /></section>
           <section id="education"><Education /></section>
           <section id="skills"><Skills /></section>
           <section id="projects"><Projects /></section>
