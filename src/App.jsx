@@ -31,10 +31,11 @@ const getTitleYVariants = (isMobile) => ({
 
 function App() {
   const [phase, setPhase] = useState("phase1");
-  const [isMobile, setIsMobile] = useState(() => window.innerWidth < 768);
+  // Use stacked layout (isMobile) if screen is narrow *or* if it is in portrait orientation
+  const [isMobile, setIsMobile] = useState(() => window.innerWidth < 768 || window.innerHeight > window.innerWidth);
 
   useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    const handleResize = () => setIsMobile(window.innerWidth < 768 || window.innerHeight > window.innerWidth);
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
@@ -80,10 +81,14 @@ function App() {
           style={{
             zIndex: 1,
             objectPosition: "center top",
-            WebkitMaskImage: "linear-gradient(to right, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%), linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%)",
-            WebkitMaskComposite: "source-in",
-            maskImage: "linear-gradient(to right, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%), linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%)",
-            maskComposite: "intersect"
+            WebkitMaskImage: isMobile 
+              ? "linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%)" 
+              : "linear-gradient(to right, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%), linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%)",
+            WebkitMaskComposite: isMobile ? "source-over" : "source-in",
+            maskImage: isMobile 
+              ? "linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%)" 
+              : "linear-gradient(to right, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%), linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%)",
+            maskComposite: isMobile ? "add" : "intersect"
           }}
         />
 
@@ -104,7 +109,7 @@ function App() {
               animate={currentVariant}
             >
               <motion.p
-                className="text-cyan-400 font-light mb-2 tracking-[0.4em] uppercase text-sm md:text-xl whitespace-nowrap"
+                className="text-cyan-400 font-light mb-2 lg:mb-4 tracking-[0.15em] md:tracking-[0.4em] uppercase text-[10px] md:text-xl px-4 whitespace-normal md:whitespace-nowrap leading-relaxed"
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 1 }}
@@ -113,7 +118,7 @@ function App() {
               </motion.p>
 
               <motion.h1
-                className={`flex w-full items-center justify-center ${phase === 'phase1' ? 'flex-row gap-4 md:gap-6' : 'flex-col gap-0 md:gap-2'}`}
+                className={`flex w-full items-center justify-center ${phase === 'phase1' ? 'flex-col md:flex-row gap-0 md:gap-6' : 'flex-col gap-0 md:gap-2'}`}
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1.5, ease: "easeOut" }}
@@ -122,14 +127,14 @@ function App() {
                 <motion.span
                   layout
                   transition={currentVariant === "phase1" ? IMAGE_VARIANTS.phase1.transition : IMAGE_VARIANTS.phase23.transition}
-                  className="font-black text-transparent bg-clip-text bg-gradient-to-br from-white via-cyan-100 to-cyan-500 drop-shadow-[0_0_20px_rgba(34,211,238,0.5)] leading-tight text-5xl md:text-6xl lg:text-7xl whitespace-nowrap"
+                  className="font-black text-transparent bg-clip-text bg-gradient-to-br from-white via-cyan-100 to-cyan-500 drop-shadow-[0_0_15px_rgba(34,211,238,0.4)] leading-tight text-4xl sm:text-5xl md:text-6xl lg:text-7xl whitespace-nowrap"
                 >
                   HII, I'M
                 </motion.span>
                 <motion.span
                   layout
                   transition={currentVariant === "phase1" ? IMAGE_VARIANTS.phase1.transition : IMAGE_VARIANTS.phase23.transition}
-                  className="font-black text-transparent bg-clip-text bg-gradient-to-br from-white via-cyan-100 to-cyan-500 drop-shadow-[0_0_20px_rgba(34,211,238,0.5)] leading-tight text-5xl md:text-6xl lg:text-7xl whitespace-nowrap"
+                  className="font-black text-transparent bg-clip-text bg-gradient-to-br from-white via-cyan-100 to-cyan-500 drop-shadow-[0_0_15px_rgba(34,211,238,0.4)] leading-tight text-4xl sm:text-5xl md:text-6xl lg:text-7xl whitespace-nowrap"
                 >
                   SURYAA
                 </motion.span>
