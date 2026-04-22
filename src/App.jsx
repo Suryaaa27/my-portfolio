@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { TypeAnimation } from "react-type-animation";
 import { useState, useEffect, useMemo } from "react";
-import backgroundImage from "./assets/profile.png";
+import backgroundImage from "./assets/profile.webp";
 
 // Import resume sections
 import About from "./components/About";
@@ -75,6 +75,9 @@ function App() {
           src={backgroundImage}
           alt="Cinematic Background"
           className="absolute top-0 bottom-0 left-0 object-cover brightness-100 contrast-110 transform-gpu"
+          loading="eager"
+          fetchpriority="high"
+          decoding="sync"
           variants={IMAGE_VARIANTS}
           initial="initial"
           animate={currentVariant}
